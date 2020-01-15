@@ -11,6 +11,7 @@ namespace AlgorithmsTests.Sorting
     {
 
         [Test]
+        [Repeat(10)]
         public void SortAscendingIntArrayTest()
         {
             // arrange
@@ -28,6 +29,7 @@ namespace AlgorithmsTests.Sorting
         }
 
         [Test]
+        [Repeat(10)]
         public void SortAscendingDoubleArrayTest()
         {
             // arrange
@@ -45,6 +47,7 @@ namespace AlgorithmsTests.Sorting
         }
 
         [Test]
+        [Repeat(10)]
         public void SortAscendingIntListTest()
         {
             // arrange
@@ -60,6 +63,7 @@ namespace AlgorithmsTests.Sorting
         }
 
         [Test]
+        [Repeat(10)]
         public void SortAscendingDoubleListTest()
         {
             // arrange
@@ -75,6 +79,7 @@ namespace AlgorithmsTests.Sorting
         }
 
         [Test]
+        [Repeat(10)]
         public void SortDescendingIntArrayTest()
         {
             // arrange
@@ -92,6 +97,7 @@ namespace AlgorithmsTests.Sorting
         }
 
         [Test]
+        [Repeat(10)]
         public void SortDescendingDoubleArrayTest()
         {
             // arrange
@@ -109,6 +115,7 @@ namespace AlgorithmsTests.Sorting
         }
 
         [Test]
+        [Repeat(10)]
         public void SortDescendingIntListTest()
         {
             // arrange
@@ -124,6 +131,7 @@ namespace AlgorithmsTests.Sorting
         }
 
         [Test]
+        [Repeat(10)]
         public void SortDescendingDoubleListTest()
         {
             // arrange
