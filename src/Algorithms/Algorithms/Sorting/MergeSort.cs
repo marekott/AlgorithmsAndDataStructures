@@ -1,117 +1,110 @@
 ﻿using System;
 using System.Collections.Generic;
+using Algorithms.Helpers;
 
 namespace Algorithms.Sorting
 {
     public static class MergeSort
     {
-        //TODO: testy na wszystkie sortowanie pustych kolekcji, lepsza nazwa parametrów a niektóre to można chyba wywalić i brać z obiektu na którym wołane, komentarze
-        public static void MergeSortAsc<T>(this IList<T> collection, int p, int r) where T : IComparable, IComparable<T>
+        /// <summary>
+        /// Sorts IList collection in ascending order using recursive divide-and-conquer algorithm
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <param name="startIndex">Index of the first element of the collection</param>
+        /// <param name="lastIndex">Index of the last element of the collection</param>
+        public static void MergeSortAsc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
         {
-            if (p < r)
+            if (startIndex < lastIndex)
             {
-                var q = (int)Math.Floor((p + r) / 2.0);
-                collection.MergeSortAsc(p, q);
-                collection.MergeSortAsc(q + 1, r);
-                collection.MergeAsc(p, q, r);
+                var q = (int)Math.Floor((startIndex + lastIndex) / 2.0);
+                collection.MergeSortAsc(startIndex, q);
+                collection.MergeSortAsc(q + 1, lastIndex);
+                collection.Merge(startIndex, q, lastIndex, Functor.Less<T>());
             }
         }
 
         /// <summary>
-        /// Help function for MergeSortAsc. Sorts two IList collections concatenated to one if each is internally sorted ascending
+        /// Sorts IList collection in descending order using recursive divide-and-conquer algorithm
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="collection"></param>
-        /// <param name="startIndex">Starting index of first collection</param>
-        /// <param name="middleIndex">Last index of first collection</param>
-        /// <param name="lastIndex">Last index of second collection</param>
-        public static void MergeAsc<T>(this IList<T> collection, int startIndex, int middleIndex, int lastIndex) where T : IComparable, IComparable<T>
+        /// <param name="startIndex">Index of the first element of the collection</param>
+        /// <param name="lastIndex">Index of the last element of the collection</param>
+        public static void MergeSortDesc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
         {
-            var n1 = middleIndex - startIndex + 1;
-            var n2 = lastIndex - middleIndex;
-            IList<T> left = new T[n1];
-            IList<T> right = new T[n2];
-
-            for (int i = 0; i < n1; i++)
+            if (startIndex < lastIndex)
             {
-                left[i] = collection[startIndex + i];
+                var q = (int)Math.Floor((startIndex + lastIndex) / 2.0);
+                collection.MergeSortDesc(startIndex, q);
+                collection.MergeSortDesc(q + 1, lastIndex);
+                collection.Merge(startIndex, q, lastIndex, Functor.Greater<T>());
             }
+        }
 
-            for (int j = 0; j < n2; j++)
-            {
-                right[j] = collection[middleIndex + j + 1];
-            }
+        /// <summary>
+        /// Help function for MergeSort methods. Sorts two IList collections concatenated to one if each is internally sorted
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <param name="startIndex">Index of the first element of first collection</param>
+        /// <param name="middleIndex">Index of the last element of first collection</param>
+        /// <param name="lastIndex">Index of the last element of second collection</param>
+        /// <param name="equationOperator">For ascending sort use Functor.Less, else use Functor.Greater</param>
+        public static void Merge<T>(this IList<T> collection, int startIndex, int middleIndex, int lastIndex, Func<T, T, bool> equationOperator) 
+            where T : IComparable, IComparable<T>
+        {
+            var left = CreateLefArray(collection, startIndex, CalculateLeftLength(startIndex, middleIndex));
+            var right = CreateRightArray(collection, middleIndex, CalculateRightLength(middleIndex, lastIndex));
 
             var leftIterator = 0;
             var rightIterator = 0;
 
             for (int k = startIndex; k <= lastIndex; k++)
             {
-                if (rightIterator >= right.Count || leftIterator < left.Count && left[leftIterator].CompareTo(right[rightIterator]) <= 0) 
+                if (rightIterator >= right.Count || leftIterator < left.Count && equationOperator(left[leftIterator], right[rightIterator]))
                 {
                     collection[k] = left[leftIterator];
-                    leftIterator += 1;
+                    leftIterator++;
                 }
-                else 
+                else
                 {
                     collection[k] = right[rightIterator];
-                    rightIterator += 1;
+                    rightIterator++;
                 }
             }
         }
 
-        public static void MergeSortDesc<T>(this IList<T> collection, int p, int r) where T : IComparable, IComparable<T>
+        private static int CalculateLeftLength(int startIndex, int middleIndex)
         {
-            if (p < r)
-            {
-                var q = (int)Math.Floor((p + r) / 2.0);
-                collection.MergeSortDesc(p, q);
-                collection.MergeSortDesc(q + 1, r);
-                collection.MergeDesc(p, q, r);
-            }
+            return middleIndex - startIndex + 1;
         }
 
-        /// <summary>
-        /// Help function for MergeSortDesc. Sorts two IList collections concatenated to one if each is internally sorted descending
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="collection"></param>
-        /// <param name="startIndex">Starting index of first collection</param>
-        /// <param name="middleIndex">Last index of first collection</param>
-        /// <param name="lastIndex">Last index of second collection</param>
-        public static void MergeDesc<T>(this IList<T> collection, int startIndex, int middleIndex, int lastIndex) where T : IComparable, IComparable<T>
+        private static int CalculateRightLength(int middleIndex, int lastIndex)
         {
-            var n1 = middleIndex - startIndex + 1;
-            var n2 = lastIndex - middleIndex;
-            IList<T> left = new T[n1];
-            IList<T> right = new T[n2];
+            return lastIndex - middleIndex;
+        }
 
-            for (int i = 0; i < n1; i++)
+        private static IList<T> CreateLefArray<T>(IList<T> collection, int startIndex, int size)
+        {
+            IList<T> left = new T[size];
+            for (int i = 0; i < size; i++)
             {
                 left[i] = collection[startIndex + i];
             }
 
-            for (int j = 0; j < n2; j++)
+            return left;
+        }
+
+        private static IList<T> CreateRightArray<T>(IList<T> collection, int middleIndex, int size)
+        {
+            IList<T> right = new T[size];
+            for (int i = 0; i < size; i++)
             {
-                right[j] = collection[middleIndex + j + 1];
+                right[i] = collection[middleIndex + i + 1];
             }
 
-            var z = 0;
-            var y = 0;
-
-            for (int k = startIndex; k <= lastIndex; k++)
-            {
-                if (y >= right.Count || z < left.Count && left[z].CompareTo(right[y]) >= 0)
-                {
-                    collection[k] = left[z];
-                    z += 1;
-                }
-                else
-                {
-                    collection[k] = right[y];
-                    y += 1;
-                }
-            }
+            return right;
         }
     }
 }

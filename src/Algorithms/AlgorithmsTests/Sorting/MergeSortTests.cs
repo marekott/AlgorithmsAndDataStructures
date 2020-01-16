@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Algorithms.Helpers;
 using Algorithms.Sorting;
 using NUnit.Framework;
 
@@ -23,7 +24,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderBy(x => x).ToArray();
 
             // act
-            actual.MergeAsc(0,left.Length - 1, right.Length - 1 + left.Length);
+            actual.Merge(0,left.Length - 1, right.Length - 1 + left.Length, Functor.Less<int>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -43,7 +44,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderBy(x => x).ToArray();
 
             // act
-            actual.MergeAsc(0, left.Length - 1, right.Length - 1 + left.Length);
+            actual.Merge(0, left.Length - 1, right.Length - 1 + left.Length, Functor.Less<double>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -61,7 +62,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderBy(x => x).ToList();
 
             // act
-            actual.MergeAsc(0, left.Count - 1, right.Count - 1 + left.Count);
+            actual.Merge(0, left.Count - 1, right.Count - 1 + left.Count, Functor.Less<int>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -79,7 +80,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderBy(x => x).ToList();
 
             // act
-            actual.MergeAsc(0, left.Count - 1, right.Count - 1 + left.Count);
+            actual.Merge(0, left.Count - 1, right.Count - 1 + left.Count, Functor.Less<double>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -99,7 +100,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderByDescending(x => x).ToArray();
 
             // act
-            actual.MergeDesc(0, left.Length - 1, right.Length - 1 + left.Length);
+            actual.Merge(0, left.Length - 1, right.Length - 1 + left.Length, Functor.Greater<int>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -119,7 +120,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderByDescending(x => x).ToArray();
 
             // act
-            actual.MergeDesc(0, left.Length - 1, right.Length - 1 + left.Length);
+            actual.Merge(0, left.Length - 1, right.Length - 1 + left.Length, Functor.Greater<double>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -137,7 +138,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderByDescending(x => x).ToList();
 
             // act
-            actual.MergeDesc(0, left.Count - 1, right.Count - 1 + left.Count);
+            actual.Merge(0, left.Count - 1, right.Count - 1 + left.Count, Functor.Greater<int>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -155,7 +156,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderByDescending(x => x).ToList();
 
             // act
-            actual.MergeDesc(0, left.Count - 1, right.Count - 1 + left.Count);
+            actual.Merge(0, left.Count - 1, right.Count - 1 + left.Count, Functor.Greater<double>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -175,7 +176,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderBy(x => x).ToArray();
 
             // act
-            actual.MergeAsc(0, left.Length - 1, right.Length - 1 + left.Length);
+            actual.Merge(0, left.Length - 1, right.Length - 1 + left.Length, Functor.Less<int>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -195,7 +196,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderBy(x => x).ToArray();
 
             // act
-            actual.MergeAsc(0, left.Length - 1, right.Length - 1 + left.Length);
+            actual.Merge(0, left.Length - 1, right.Length - 1 + left.Length, Functor.Less<int>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -215,7 +216,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderBy(x => x).ToArray();
 
             // act
-            actual.MergeAsc(0, left.Length - 1, right.Length - 1 + left.Length);
+            actual.Merge(0, left.Length - 1, right.Length - 1 + left.Length, Functor.Less<int>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -235,7 +236,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderByDescending(x => x).ToArray();
 
             // act
-            actual.MergeDesc(0, left.Length - 1, right.Length - 1 + left.Length);
+            actual.Merge(0, left.Length - 1, right.Length - 1 + left.Length, Functor.Greater<int>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -255,7 +256,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderByDescending(x => x).ToArray();
 
             // act
-            actual.MergeDesc(0, left.Length - 1, right.Length - 1 + left.Length);
+            actual.Merge(0, left.Length - 1, right.Length - 1 + left.Length, Functor.Greater<int>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -275,7 +276,7 @@ namespace AlgorithmsTests.Sorting
             var expected = actual.OrderByDescending(x => x).ToArray();
 
             // act
-            actual.MergeDesc(0, left.Length - 1, right.Length - 1 + left.Length);
+            actual.Merge(0, left.Length - 1, right.Length - 1 + left.Length, Functor.Greater<int>());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -415,6 +416,28 @@ namespace AlgorithmsTests.Sorting
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void SortAscendingEmptyList()
+        {
+            // arrange
+            var emptyList = new List<double>();
+
+            // act
+            // assert
+            Assert.DoesNotThrow(() => emptyList.MergeSortAsc(0, emptyList.Count));
+        }
+
+        [Test]
+        public void SortDescendingEmptyList()
+        {
+            // arrange
+            var emptyList = new List<double>();
+
+            // act
+            // assert
+            Assert.DoesNotThrow(() => emptyList.MergeSortDesc(0, emptyList.Count));
         }
     }
 }

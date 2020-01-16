@@ -145,5 +145,27 @@ namespace AlgorithmsTests.Sorting
             // assert
             CollectionAssert.AreEqual(expected, actual);
         }
+
+        [Test]
+        public void SortAscendingEmptyList()
+        {
+            // arrange
+            var emptyList = new List<double>();
+
+            // act
+            // assert
+            Assert.DoesNotThrow(() => emptyList.InsertionSortAsc());
+        }
+
+        [Test]
+        public void SortDescendigEmptyList()
+        {
+            // arrange
+            var emptyList = new List<double>();
+
+            // act
+            // assert
+            Assert.DoesNotThrow(() => emptyList.InsertionSortDesc());
+        }
     }
 }
