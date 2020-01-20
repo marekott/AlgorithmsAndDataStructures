@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using Algorithms.Sorting;
+using NUnit.Framework;
 
 namespace AlgorithmsTests.Sorting
 {
     [TestFixture]
-    public class InsertionSortTests
+    public class BubbleSortTests
     {
         [Test]
         [Repeat(10)]
@@ -21,7 +21,7 @@ namespace AlgorithmsTests.Sorting
             expected = expected.OrderBy(x => x).ToArray();
 
             // act
-            actual.InsertionSortAsc();
+            actual.BubbleSortAsc();
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -39,7 +39,7 @@ namespace AlgorithmsTests.Sorting
             expected = expected.OrderBy(x => x).ToArray();
 
             // act
-            actual.InsertionSortAsc();
+            actual.BubbleSortAsc();
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -55,7 +55,7 @@ namespace AlgorithmsTests.Sorting
             var expected = new List<int>(actual.OrderBy(x => x));
 
             // act
-            actual.InsertionSortAsc();
+            actual.BubbleSortAsc();
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -71,7 +71,7 @@ namespace AlgorithmsTests.Sorting
             var expected = new List<double>(actual.OrderBy(x => x));
 
             // act
-            actual.InsertionSortAsc();
+            actual.BubbleSortAsc();
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -89,7 +89,7 @@ namespace AlgorithmsTests.Sorting
             expected = expected.OrderByDescending(x => x).ToArray();
 
             // act
-            actual.InsertionSortDesc();
+            actual.BubbleSortDesc();
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -107,7 +107,7 @@ namespace AlgorithmsTests.Sorting
             expected = expected.OrderByDescending(x => x).ToArray();
 
             // act
-            actual.InsertionSortDesc();
+            actual.BubbleSortDesc();
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -123,7 +123,7 @@ namespace AlgorithmsTests.Sorting
             var expected = new List<int>(actual.OrderByDescending(x => x));
 
             // act
-            actual.InsertionSortDesc();
+            actual.BubbleSortDesc();
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -139,7 +139,7 @@ namespace AlgorithmsTests.Sorting
             var expected = new List<double>(actual.OrderByDescending(x => x));
 
             // act
-            actual.InsertionSortDesc();
+            actual.BubbleSortDesc();
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -153,7 +153,7 @@ namespace AlgorithmsTests.Sorting
 
             // act
             // assert
-            Assert.DoesNotThrow(() => emptyList.InsertionSortAsc());
+            Assert.DoesNotThrow(() => emptyList.BubbleSortAsc());
         }
 
         [Test]
@@ -164,7 +164,7 @@ namespace AlgorithmsTests.Sorting
 
             // act
             // assert
-            Assert.DoesNotThrow(() => emptyList.InsertionSortDesc());
+            Assert.DoesNotThrow(() => emptyList.BubbleSortDesc());
         }
     }
 }
