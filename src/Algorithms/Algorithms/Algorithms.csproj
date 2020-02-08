@@ -2,6 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>Marek Ott</Authors>
+    <Company>Marek Ott</Company>
+    <Product>AlgorithmsExtension</Product>
+    <Copyright>Copyright ©  2019</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>.NET Standard 2.0 library containing various algorithms.</Description>
+    <PackageProjectUrl>https://github.com/marekott/AlgorithmsAndDataStructures</PackageProjectUrl>
+    <PackageTags>algorithms sorting-algorithms</PackageTags>
+    <PackageId>AlgorithmsExtension</PackageId>
+    <RepositoryUrl>https://github.com/marekott/AlgorithmsAndDataStructures</RepositoryUrl>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
