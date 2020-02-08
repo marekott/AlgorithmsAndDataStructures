@@ -2,9 +2,9 @@
 
 Library containing algorithms and data structures. Written in .NET Standard 2.0, can be used both with .NET Framework and .NET Core.
 
-- AlgorithmsExtensions Build: ![Build Status](
+- AlgorithmsExtension Build: ![Build Status](
 https://dev.azure.com/marekott94/AlgorithmsAndDataStructures/_apis/build/status/AlgorithmsBuild?branchName=master "Build Status")
-- AlgorithmsExtensions Release: ![Release Status](
+- AlgorithmsExtension Release: ![Release Status](
 https://vsrm.dev.azure.com/marekott94/_apis/public/Release/badge/2413bb11-0690-4a93-94d6-5246c6d9b814/1/1 "Release Status")
 
 ## Table of Contents
