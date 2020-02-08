@@ -1,0 +1,96 @@
+# AlgorithmsAndDataStructures
+
+Library containing algorithms and data structures. Written in .NET Standard 2.0, can be used both with .NET Framework and .NET Core.
+
+- AlgorithmsExtensions Build: ![Build Status](
+https://dev.azure.com/marekott94/AlgorithmsAndDataStructures/_apis/build/status/AlgorithmsBuild?branchName=master "Build Status")
+- AlgorithmsExtensions Release: ![Release Status](
+https://vsrm.dev.azure.com/marekott94/_apis/public/Release/badge/2413bb11-0690-4a93-94d6-5246c6d9b814/1/1 "Release Status")
+
+## Table of Contents
+1. [ AlgorithmsExtensions ](#algorithmsExtensions)<br/>
+1.1 [ Sorting Algorithms ](#sortingAlgorithms)<br/>
+1.1.1 [ Bubble Sort ](#bubbleSort)<br/>
+1.1.2 [ Insertion Sort ](#insertionSort)<br/>
+1.1.2 [ Merge Sort ](#mergeSort)<br/>
+2. [ Sources ](#sources)<br/>
+
+<a name="algorithmsExtensions"></a>
+## AlgorithmsExtensions 
+AlgorithmsExtensions is installed from NuGet.
+```
+Install-Package AlgorithmsExtension
+```
+<a name="sortingAlgorithms"></a>
+### Sorting Algorithms
+Sorting algorithms are implemented as IList extensions methods.<br/>
+Usage:
+```
+using Algorithms.Sorting;
+```
+
+<a name="bubbleSort"></a>
+#### BubbleSort
+```csharp
+/// <summary>
+/// Sorts IList collection in ascending order using bubble sort algorithm
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="collection"></param>
+public static void BubbleSortAsc<T>(this IList<T> collection) where T : IComparable, IComparable<T>
+```
+```csharp
+/// <summary>
+/// Sorts IList collection in descending order using bubble sort algorithm
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="collection"></param>
+public static void BubbleSortDesc<T>(this IList<T> collection) where T : IComparable, IComparable<T>
+```
+
+<a name="insertionSort"></a>
+#### InsertionSort
+```csharp
+/// <summary>
+/// Sorts IList collection in ascending order using insertion sort algorithm.
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="collection"></param>
+public static void InsertionSortAsc<T>(this IList<T> collection) where T : IComparable, IComparable<T>
+```
+```csharp
+/// <summary>
+/// Sorts IList collection in descending order using insertion sort algorithm.
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="collection"></param>
+public static void InsertionSortDesc<T>(this IList<T> collection) where T : IComparable, IComparable<T>
+```
+
+<a name="mergeSort"></a>
+#### MergeSort
+```csharp
+/// <summary>
+/// Sorts IList collection in ascending order using recursive divide-and-conquer algorithm
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="collection"></param>
+/// <param name="startIndex">Index of the first element of the collection</param>
+/// <param name="lastIndex">Index of the last element of the collection</param>
+public static void MergeSortAsc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
+```
+```csharp
+/// <summary>
+/// Sorts IList collection in descending order using recursive divide-and-conquer algorithm
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="collection"></param>
+/// <param name="startIndex">Index of the first element of the collection</param>
+/// <param name="lastIndex">Index of the last element of the collection</param>
+public static void MergeSortDesc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
+```
+
+<a name="sources"></a>
+## Sources
+1. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein (2009). *Introduction to Algorithms*. 
+Massachusetts Institute of Technology.
