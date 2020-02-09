@@ -26,7 +26,7 @@ Install-Package AlgorithmsExtension
 Sorting algorithms are implemented as IList extensions methods.<br/>
 Usage:
 ```
-using Algorithms.Sorting;
+using AlgorithmsExtension.Sorting;
 ```
 
 <a name="bubbleSort"></a>
