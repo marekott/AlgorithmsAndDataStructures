@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Algorithms.Helpers;
+using AlgorithmsExtension.Helpers;
 
-namespace Algorithms.Sorting
+namespace AlgorithmsExtension.Sorting
 {
     public static class BubbleSort
     {

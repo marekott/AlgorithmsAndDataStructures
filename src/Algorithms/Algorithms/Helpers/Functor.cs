@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Algorithms.Helpers
+namespace AlgorithmsExtension.Helpers
 {
     public static class Functor
     {
