@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using AlgorithmsExtension.Sorting;
+using NUnit.Framework;
 
-namespace AlgorithmsTests.Sorting
+namespace AlgorithmsExtensionTests.Sorting
 {
     [TestFixture]
     public class InsertionSortTests

@@ -5,7 +5,7 @@ using AlgorithmsExtension.Helpers;
 using AlgorithmsExtension.Sorting;
 using NUnit.Framework;
 
-namespace AlgorithmsTests.Sorting
+namespace AlgorithmsExtensionTests.Sorting
 {
     [TestFixture]
     public class MergeSortTests

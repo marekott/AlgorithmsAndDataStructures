@@ -4,7 +4,7 @@ using System.Linq;
 using AlgorithmsExtension.Sorting;
 using NUnit.Framework;
 
-namespace AlgorithmsTests.Sorting
+namespace AlgorithmsExtensionTests.Sorting
 {
     [TestFixture]
     public class BubbleSortTests
