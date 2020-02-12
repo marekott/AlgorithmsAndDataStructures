@@ -13,6 +13,7 @@ https://vsrm.dev.azure.com/marekott94/_apis/public/Release/badge/2413bb11-0690-4
 1.1.1 [ Bubble Sort ](#bubbleSort)<br/>
 1.1.2 [ Insertion Sort ](#insertionSort)<br/>
 1.1.2 [ Merge Sort ](#mergeSort)<br/>
+1.1.3 [ Quick Sort ](#quickSort)<br/>
 2. [ Sources ](#sources)<br/>
 
 <a name="algorithmsExtensions"></a>
@@ -88,6 +89,29 @@ public static void MergeSortAsc<T>(this IList<T> collection, int startIndex, int
 /// <param name="startIndex">Index of the first element of the collection</param>
 /// <param name="lastIndex">Index of the last element of the collection</param>
 public static void MergeSortDesc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
+```
+
+<a name="quickSort"></a>
+#### QuickSort
+```csharp
+/// <summary>
+/// Sorts IList collection in ascending order using Quick sort algorithm
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="collection"></param>
+/// <param name="startIndex">Index of the first element of the collection</param>
+/// <param name="lastIndex">Index of the last element of the collection</param>
+public static void QuickSortAsc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
+```
+```csharp
+/// <summary>
+/// Sorts IList collection in descending order using Quick sort algorithm
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="collection"></param>
+/// <param name="startIndex">Index of the first element of the collection</param>
+/// <param name="lastIndex">Index of the last element of the collection</param>
+public static void QuickSortDesc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
 ```
 
 <a name="sources"></a>
