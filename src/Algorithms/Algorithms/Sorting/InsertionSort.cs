@@ -7,9 +7,7 @@ namespace AlgorithmsExtension.Sorting
     public static class InsertionSort
     {
         /// <summary>
-        /// Sorts IList collection in ascending order using insertion sort algorithm. Optimistic case sorts in an + b time,
-        /// where n - collection size, a, b - constants. Pessimistic case
-        /// uses an^2 + bn +c, where n - collection size, a, b, c - constants
+        /// Sorts IList collection in ascending order using insertion sort algorithm.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="collection"></param>
@@ -19,9 +17,7 @@ namespace AlgorithmsExtension.Sorting
         }
 
         /// <summary>
-        /// Sorts IList collection in descending order using insertion sort algorithm. Optimistic case sorts in an + b time,
-        /// where n - collection size, a, b - constants. Pessimistic case
-        /// uses an^2 + bn +c, where n - collection size, a, b, c - constants
+        /// Sorts IList collection in descending order using insertion sort algorithm.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="collection"></param>
