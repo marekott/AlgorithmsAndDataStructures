@@ -10,18 +10,16 @@ namespace AlgorithmsExtensionTests.Sorting
     public class CountingSortTests
     {
         [Test]
-        [Repeat(10)]
-        public void SortAscendingIntArrayTest()
+        public void UseForDebuggingTest()
         {
             // arrange
-            var random = new Random();
-            var actual = Enumerable.Repeat(0, 100).Select(i => random.Next(0, 100)).ToArray();
-            var expected = new int[actual.Length];
-            Array.Copy(actual, expected, actual.Length);
+            uint[] dataToSort = {2, 5, 3, 0, 2, 3, 0, 3 };
+            var expected = new uint[dataToSort.Length];
+            Array.Copy(dataToSort, expected, dataToSort.Length);
             expected = expected.OrderBy(x => x).ToArray();
 
             // act
-            actual.CountingSortAsc();
+            var actual = dataToSort.CountingSortAsc(dataToSort.Max());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -29,17 +27,17 @@ namespace AlgorithmsExtensionTests.Sorting
 
         [Test]
         [Repeat(10)]
-        public void SortAscendingDoubleArrayTest()
+        public void SortAscendingUintArrayTest()
         {
             // arrange
             var random = new Random();
-            var actual = Enumerable.Repeat(0, 100).Select(i => random.NextDouble()).ToArray();
-            var expected = new double[actual.Length];
-            Array.Copy(actual, expected, actual.Length);
+            var dataToSort = Enumerable.Repeat(0, 100).Select(i => (uint)random.Next(0, 100)).ToArray();
+            var expected = new uint[dataToSort.Length];
+            Array.Copy(dataToSort, expected, dataToSort.Length);
             expected = expected.OrderBy(x => x).ToArray();
 
             // act
-            actual.CountingSortAsc();
+            var actual = dataToSort.CountingSortAsc(dataToSort.Max());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -47,15 +45,17 @@ namespace AlgorithmsExtensionTests.Sorting
 
         [Test]
         [Repeat(10)]
-        public void SortAscendingIntListTest()
+        public void SortAscendingUlongArrayTest()
         {
             // arrange
             var random = new Random();
-            var actual = Enumerable.Repeat(0, 100).Select(i => random.Next(0, 100)).ToList();
-            var expected = new List<int>(actual.OrderBy(x => x));
+            var dataToSort = Enumerable.Repeat(0, 100).Select(i => (ulong)random.Next(0, 100)).ToArray();
+            var expected = new ulong[dataToSort.Length];
+            Array.Copy(dataToSort, expected, dataToSort.Length);
+            expected = expected.OrderBy(x => x).ToArray();
 
             // act
-            actual.CountingSortAsc();
+            var actual = dataToSort.CountingSortAsc(dataToSort.Max());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -63,15 +63,15 @@ namespace AlgorithmsExtensionTests.Sorting
 
         [Test]
         [Repeat(10)]
-        public void SortAscendingDoubleListTest()
+        public void SortAscendingUintListTest()
         {
             // arrange
             var random = new Random();
-            var actual = Enumerable.Repeat(0, 100).Select(i => random.NextDouble()).ToList();
-            var expected = new List<double>(actual.OrderBy(x => x));
+            var dataToSort = Enumerable.Repeat(0, 100).Select(i => (uint)random.Next(0, 100)).ToList();
+            var expected = new List<uint>(dataToSort.OrderBy(x => x));
 
             // act
-            actual.CountingSortAsc();
+            var actual = dataToSort.CountingSortAsc(dataToSort.Max());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -79,17 +79,15 @@ namespace AlgorithmsExtensionTests.Sorting
 
         [Test]
         [Repeat(10)]
-        public void SortDescendingIntArrayTest()
+        public void SortAscendingUlongListTest()
         {
             // arrange
             var random = new Random();
-            var actual = Enumerable.Repeat(0, 100).Select(i => random.Next(0, 100)).ToArray();
-            var expected = new int[actual.Length];
-            Array.Copy(actual, expected, actual.Length);
-            expected = expected.OrderByDescending(x => x).ToArray();
+            var dataToSort = Enumerable.Repeat(0, 100).Select(i => (ulong)random.Next(0, 100)).ToList();
+            var expected = new List<ulong>(dataToSort.OrderBy(x => x));
 
             // act
-            actual.CountingSortDesc();
+            var actual = dataToSort.CountingSortAsc(dataToSort.Max());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -97,17 +95,17 @@ namespace AlgorithmsExtensionTests.Sorting
 
         [Test]
         [Repeat(10)]
-        public void SortDescendingDoubleArrayTest()
+        public void SortDescendingUintArrayTest()
         {
             // arrange
             var random = new Random();
-            var actual = Enumerable.Repeat(0, 100).Select(i => random.NextDouble()).ToArray();
-            var expected = new double[actual.Length];
-            Array.Copy(actual, expected, actual.Length);
-            expected = expected.OrderByDescending(x => x).ToArray();
+            var dataToSort = Enumerable.Repeat(0, 100).Select(i => (uint)random.Next(0, 100)).ToArray();
+            var expected = new uint[dataToSort.Length];
+            Array.Copy(dataToSort, expected, dataToSort.Length);
+            expected = expected.OrderBy(x => x).ToArray();
 
             // act
-            actual.CountingSortDesc();
+            var actual = dataToSort.CountingSortDesc(dataToSort.Max());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -115,15 +113,17 @@ namespace AlgorithmsExtensionTests.Sorting
 
         [Test]
         [Repeat(10)]
-        public void SortDescendingIntListTest()
+        public void SortDescendingUlongArrayTest()
         {
             // arrange
             var random = new Random();
-            var actual = Enumerable.Repeat(0, 100).Select(i => random.Next(0, 100)).ToList();
-            var expected = new List<int>(actual.OrderByDescending(x => x));
+            var dataToSort = Enumerable.Repeat(0, 100).Select(i => (ulong)random.Next(0, 100)).ToArray();
+            var expected = new ulong[dataToSort.Length];
+            Array.Copy(dataToSort, expected, dataToSort.Length);
+            expected = expected.OrderBy(x => x).ToArray();
 
             // act
-            actual.CountingSortDesc();
+            var actual = dataToSort.CountingSortDesc(dataToSort.Max());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
@@ -131,40 +131,34 @@ namespace AlgorithmsExtensionTests.Sorting
 
         [Test]
         [Repeat(10)]
-        public void SortDescendingDoubleListTest()
+        public void SortDescendingUintListTest()
         {
             // arrange
             var random = new Random();
-            var actual = Enumerable.Repeat(0, 100).Select(i => random.NextDouble()).ToList();
-            var expected = new List<double>(actual.OrderByDescending(x => x));
+            var dataToSort = Enumerable.Repeat(0, 100).Select(i => (uint)random.Next(0, 100)).ToList();
+            var expected = new List<uint>(dataToSort.OrderBy(x => x));
 
             // act
-            actual.CountingSortDesc();
+            var actual = dataToSort.CountingSortDesc(dataToSort.Max());
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
         }
 
         [Test]
-        public void SortAscendingEmptyList()
+        [Repeat(10)]
+        public void SortDescendingUlongListTest()
         {
             // arrange
-            var emptyList = new List<double>();
+            var random = new Random();
+            var dataToSort = Enumerable.Repeat(0, 100).Select(i => (ulong)random.Next(0, 100)).ToList();
+            var expected = new List<ulong>(dataToSort.OrderBy(x => x));
 
             // act
-            // assert
-            Assert.DoesNotThrow(() => emptyList.CountingSortAsc());
-        }
+            var actual = dataToSort.CountingSortDesc(dataToSort.Max());
 
-        [Test]
-        public void SortDescendingEmptyList()
-        {
-            // arrange
-            var emptyList = new List<double>();
-
-            // act
             // assert
-            Assert.DoesNotThrow(() => emptyList.CountingSortDesc());
+            CollectionAssert.AreEqual(expected, actual);
         }
     }
 }
