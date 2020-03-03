@@ -14,6 +14,7 @@ https://vsrm.dev.azure.com/marekott94/_apis/public/Release/badge/2413bb11-0690-4
 1.1.2 [ Insertion Sort ](#insertionSort)<br/>
 1.1.2 [ Merge Sort ](#mergeSort)<br/>
 1.1.3 [ Quick Sort ](#quickSort)<br/>
+1.1.4 [ Counting Sort ] (#countingSort)<br/>
 2. [ Sources ](#sources)<br/>
 
 <a name="algorithmsExtensions"></a>
@@ -112,6 +113,28 @@ public static void QuickSortAsc<T>(this IList<T> collection, int startIndex, int
 /// <param name="startIndex">Index of the first element of the collection</param>
 /// <param name="lastIndex">Index of the last element of the collection</param>
 public static void QuickSortDesc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
+```
+
+<a name="countingSort"></a>
+#### CountingSort
+Counting sort algorithm is available for IList collections of types uint and ulong. Both versions have the same signatures.
+```csharp
+/// <summary>
+/// Sorts IList collection in ascending order using counting sort algorithm
+/// </summary>
+/// <param name="collection"></param>
+/// <param name="maxValue">The maximum value of the sorted collection</param>
+/// <returns>New sorted IList collection</returns>
+public static IList<uint> CountingSortAsc(this IList<uint> collection, uint maxValue)
+```
+```csharp
+/// <summary>
+/// Sorts IList collection in descending order using counting sort algorithm
+/// </summary>
+/// <param name="collection"></param>
+/// <param name="maxValue">The maximum value of the sorted collection</param>
+/// <returns>New sorted IList collection</returns>
+public static IList<uint> CountingSortDesc(this IList<uint> collection, uint maxValue)
 ```
 
 <a name="sources"></a>

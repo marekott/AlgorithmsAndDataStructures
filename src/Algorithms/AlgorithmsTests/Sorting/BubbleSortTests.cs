@@ -157,7 +157,7 @@ namespace AlgorithmsExtensionTests.Sorting
         }
 
         [Test]
-        public void SortDescendigEmptyList()
+        public void SortDescendingEmptyList()
         {
             // arrange
             var emptyList = new List<double>();
