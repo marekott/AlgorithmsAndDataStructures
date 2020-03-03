@@ -14,7 +14,7 @@ https://vsrm.dev.azure.com/marekott94/_apis/public/Release/badge/2413bb11-0690-4
 1.1.2 [ Insertion Sort ](#insertionSort)<br/>
 1.1.2 [ Merge Sort ](#mergeSort)<br/>
 1.1.3 [ Quick Sort ](#quickSort)<br/>
-1.1.4 [ Counting Sort ] (#countingSort)<br/>
+1.1.4 [ Counting Sort ](#countingSort)<br/>
 2. [ Sources ](#sources)<br/>
 
 <a name="algorithmsExtensions"></a>
