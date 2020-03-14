@@ -17,8 +17,8 @@ namespace AlgorithmsExtension.Sorting
         {
             if (startIndex < lastIndex)
             {
-                var separatingElementIndex = collection.Partition(startIndex, lastIndex, Functor.Less<T>());
-                collection.QuickSortAsc(startIndex, separatingElementIndex - 1);
+                var separatingElementIndex = collection.Partition(startIndex, lastIndex, Functor.Less<T>(), Functor.Greater<T>());
+                collection.QuickSortAsc(startIndex, separatingElementIndex);
                 collection.QuickSortAsc(separatingElementIndex + 1, lastIndex);
             }
         }
@@ -34,8 +34,8 @@ namespace AlgorithmsExtension.Sorting
         {
             if (startIndex < lastIndex)
             {
-                var separatingElementIndex = collection.Partition(startIndex, lastIndex, Functor.Greater<T>());
-                collection.QuickSortDesc(startIndex, separatingElementIndex - 1);
+                var separatingElementIndex = collection.Partition(startIndex, lastIndex, Functor.Greater<T>(), Functor.Less<T>());
+                collection.QuickSortDesc(startIndex, separatingElementIndex);
                 collection.QuickSortDesc(separatingElementIndex + 1, lastIndex);
             }
         }
@@ -48,28 +48,36 @@ namespace AlgorithmsExtension.Sorting
         /// <param name="collection"></param>
         /// <param name="startIndex">Index of the first element of the collection</param>
         /// <param name="lastIndex">Index of the last element of the collection</param>
-        /// <param name="equationOperator">For ascending sort use Functor.Less, else use Functor.Greater</param>
+        /// <param name="leftEquationOperator">For ascending sort use Functor.Less, else use Functor.Greater</param>
+        /// <param name="rightEquationOperator">For ascending sort use Functor.Greater, else use Functor.Less</param>
         /// <returns>Index of the element which was used to divide collection</returns>
-        public static int Partition<T>(this IList<T> collection, int startIndex, int lastIndex, Func<T, T, bool> equationOperator) where T : IComparable, IComparable<T>
+        private static int Partition<T>(this IList<T> collection, int startIndex, int lastIndex, Func<T, T, bool> leftEquationOperator, 
+            Func<T, T, bool> rightEquationOperator) where T : IComparable, IComparable<T>
         {
-            var separatingElement = collection[lastIndex];
-            var i = startIndex - 1;
+            var elementToCompare = collection[(startIndex + lastIndex) >> 1]; //equivalent of (int)Math.Floor((startIndex + lastIndex) / 2.0 but much faster
+            var left = startIndex;
+            var right = lastIndex;
 
-            for (int j = startIndex; j < lastIndex; j++)
+            while (true)
             {
-                if (equationOperator(collection[j], separatingElement))
+                while (leftEquationOperator(collection[left], elementToCompare)) left++;
+                while (rightEquationOperator(collection[right], elementToCompare)) right--;
+
+                if (left >= right)
                 {
-                    i++;
-                    var temp = collection[i];
-                    collection[i] = collection[j];
-                    collection[j] = temp;
+                    return right;
                 }
+
+                collection.Swap(left, right);
+                left++; right--;
             }
+        }
 
-            collection[lastIndex] = collection[i + 1];
-            collection[i + 1] = separatingElement;
-
-            return i + 1;
+        private static void Swap<T>(this IList<T> collection, int left, int right)
+        {
+            var temp = collection[left];
+            collection[left] = collection[right];
+            collection[right] = temp;
         }
     }
 }

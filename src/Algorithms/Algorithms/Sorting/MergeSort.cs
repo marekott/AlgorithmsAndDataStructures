@@ -17,7 +17,7 @@ namespace AlgorithmsExtension.Sorting
         {
             if (startIndex < lastIndex)
             {
-                var q = (int)Math.Floor((startIndex + lastIndex) / 2.0);
+                var q = ((startIndex + lastIndex) >> 1); //equivalent of (int)Math.Floor((startIndex + lastIndex) / 2.0 but much faster
                 collection.MergeSortAsc(startIndex, q);
                 collection.MergeSortAsc(q + 1, lastIndex);
                 collection.Merge(startIndex, q, lastIndex, Functor.Less<T>());
@@ -35,7 +35,7 @@ namespace AlgorithmsExtension.Sorting
         {
             if (startIndex < lastIndex)
             {
-                var q = (int)Math.Floor((startIndex + lastIndex) / 2.0);
+                var q = ((startIndex + lastIndex) >> 1); //equivalent of (int)Math.Floor((startIndex + lastIndex) / 2.0 but much faster
                 collection.MergeSortDesc(startIndex, q);
                 collection.MergeSortDesc(q + 1, lastIndex);
                 collection.Merge(startIndex, q, lastIndex, Functor.Greater<T>());

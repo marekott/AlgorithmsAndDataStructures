@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AlgorithmsExtension.Helpers;
 using AlgorithmsExtension.Sorting;
 using NUnit.Framework;
 
@@ -10,86 +9,6 @@ namespace AlgorithmsExtensionTests.Sorting
     [TestFixture]
     public class QuickSortTests
     {
-        [Test]
-        [Repeat(20)]
-        public void PartitionAscendingProperSortTest()
-        {
-            // arrange
-            var random = new Random();
-            var actual = Enumerable.Repeat(0, 200).Select(i => random.Next(0, 200)).ToArray();
-
-            // act
-            var separatingElementIndex = actual.Partition(0, actual.Length - 1, Functor.Less<int>());
-
-            // assert
-            Assert.Multiple(() =>
-            {
-                for (int i = 0; i < separatingElementIndex; i++)
-                {
-                    Assert.LessOrEqual(actual[i], actual[separatingElementIndex]);
-                }
-
-                for (int i = separatingElementIndex + 1; i < actual.Length; i++)
-                {
-                    Assert.LessOrEqual(actual[separatingElementIndex], actual[i]);
-                }
-            });
-        }
-
-        [Test]
-        [Repeat(20)]
-        public void PartitionDescendingProperSortTest()
-        {
-            // arrange
-            var random = new Random();
-            var actual = Enumerable.Repeat(0, 200).Select(i => random.Next(0, 200)).ToArray();
-
-            // act
-            var separatingElementIndex = actual.Partition(0, actual.Length - 1, Functor.Greater<int>());
-
-            // assert
-            Assert.Multiple(() =>
-            {
-                for (int i = 0; i < separatingElementIndex; i++)
-                {
-                    Assert.GreaterOrEqual(actual[i], actual[separatingElementIndex]);
-                }
-
-                for (int i = separatingElementIndex + 1; i < actual.Length; i++)
-                {
-                    Assert.GreaterOrEqual(actual[separatingElementIndex], actual[i]);
-                }
-            });
-        }
-
-        [Test]
-        public void PartitionAscendingProperIndexWasReturnTest()
-        {
-            // arrange
-            var collection = new[] { 2, 8, 7, 1, 3, 5, 6, 4 };
-            var expected = 3;
-
-            // act
-            var actual = collection.Partition(0, collection.Length - 1, Functor.Less<int>());
-
-            // assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test]
-        public void PartitionDescendingProperIndexWasReturnTest()
-        {
-            // arrange
-            var collection = new[] { 2, 8, 7, 1, 3, 5, 6, 4 };
-            var expected = 4;
-
-            // act
-            var actual = collection.Partition(0, collection.Length - 1, Functor.Greater<int>());
-
-            // assert
-            Assert.AreEqual(expected, actual);
-        }
-
         [Test]
         [Repeat(10)]
         public void SortAscendingIntArrayTest()
