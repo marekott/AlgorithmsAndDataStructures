@@ -33,7 +33,7 @@ using AlgorithmsExtension.Sorting;
 
 Sorting algorithms were tested on arrays of 35000 elements with numbers from 0 to 999. Each of them in 3 cases, when data are already sorted (optimistic case), when they are not (random case) and when they were sorted in reverse order (pessimistic case). Each time algorithms were sorting ten times and an average of all cases where computed. Results are presented in milliseconds.
 
-![Algorithms performance](/src/Algorithms/img/Algorithms performance.jpg)
+![Algorithms performance](/src/Algorithms/img/Algorithms performance.jpg?raw=true)
 
 For beater reading executions that exceded 25 milliseconds were reduced to that time. Real performance were: BubbleSort(7555.1, 8040.3, 8241), InsertionSort(0.1, 447.1, 819.7).
 
