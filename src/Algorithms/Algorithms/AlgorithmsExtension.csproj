@@ -19,7 +19,7 @@
     <Version>1.0.3.1</Version>
     <AssemblyName>AlgorithmsExtension</AssemblyName>
     <RootNamespace>AlgorithmsExtension</RootNamespace>
-    <PackageReleaseNotes>Adds CountingSort algorithm</PackageReleaseNotes>
+    <PackageReleaseNotes>Performance optimization MergeSort(quicker mathematical operations) and QuickSort(implementation of Hoare's partition).</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
