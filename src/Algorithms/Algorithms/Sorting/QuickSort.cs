@@ -15,11 +15,11 @@ namespace AlgorithmsExtension.Sorting
         /// <param name="lastIndex">Index of the last element of the collection</param>
         public static void QuickSortAsc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
         {
-            if (startIndex < lastIndex)
+            while (startIndex < lastIndex)
             {
                 var separatingElementIndex = collection.Partition(startIndex, lastIndex, Functor.Less<T>(), Functor.Greater<T>());
                 collection.QuickSortAsc(startIndex, separatingElementIndex);
-                collection.QuickSortAsc(separatingElementIndex + 1, lastIndex);
+                startIndex = separatingElementIndex + 1;
             }
         }
 
@@ -32,11 +32,11 @@ namespace AlgorithmsExtension.Sorting
         /// <param name="lastIndex">Index of the last element of the collection</param>
         public static void QuickSortDesc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
         {
-            if (startIndex < lastIndex)
+            while (startIndex < lastIndex)
             {
                 var separatingElementIndex = collection.Partition(startIndex, lastIndex, Functor.Greater<T>(), Functor.Less<T>());
                 collection.QuickSortDesc(startIndex, separatingElementIndex);
-                collection.QuickSortDesc(separatingElementIndex + 1, lastIndex);
+                startIndex = separatingElementIndex + 1;
             }
         }
 
