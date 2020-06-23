@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using AlgorithmsExtension.Helpers;
 
 namespace AlgorithmsExtension.Sorting
 {
@@ -17,7 +16,7 @@ namespace AlgorithmsExtension.Sorting
         {
             while (startIndex < lastIndex)
             {
-                var separatingElementIndex = collection.Partition(startIndex, lastIndex, Functor.Less<T>(), Functor.Greater<T>());
+                var separatingElementIndex = collection.PartitionAsc(startIndex, lastIndex);
                 collection.QuickSortAsc(startIndex, separatingElementIndex);
                 startIndex = separatingElementIndex + 1;
             }
@@ -34,25 +33,22 @@ namespace AlgorithmsExtension.Sorting
         {
             while (startIndex < lastIndex)
             {
-                var separatingElementIndex = collection.Partition(startIndex, lastIndex, Functor.Greater<T>(), Functor.Less<T>());
+                var separatingElementIndex = collection.PartitionDesc(startIndex, lastIndex);
                 collection.QuickSortDesc(startIndex, separatingElementIndex);
                 startIndex = separatingElementIndex + 1;
             }
         }
 
         /// <summary>
-        /// Help function for QuickSort methods. Collection is divided by value separating element. All values greater/lesser
-        /// are moved before him and all lesser/greater after him
+        /// Helper function for QuickSortAsc method. Collection is divided by value separating element. All values greater
+        /// are moved before him and all lesser after him
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="collection"></param>
         /// <param name="startIndex">Index of the first element of the collection</param>
         /// <param name="lastIndex">Index of the last element of the collection</param>
-        /// <param name="leftEquationOperator">For ascending sort use Functor.Less, else use Functor.Greater</param>
-        /// <param name="rightEquationOperator">For ascending sort use Functor.Greater, else use Functor.Less</param>
-        /// <returns>Index of the element which was used to divide collection</returns>
-        private static int Partition<T>(this IList<T> collection, int startIndex, int lastIndex, Func<T, T, bool> leftEquationOperator, 
-            Func<T, T, bool> rightEquationOperator) where T : IComparable, IComparable<T>
+        /// <returns></returns>
+        private static int PartitionAsc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
         {
             var elementToCompare = collection[(startIndex + lastIndex) >> 1]; //equivalent of (int)Math.Floor((startIndex + lastIndex) / 2.0 but much faster
             var left = startIndex;
@@ -60,8 +56,38 @@ namespace AlgorithmsExtension.Sorting
 
             while (true)
             {
-                while (leftEquationOperator(collection[left], elementToCompare)) left++;
-                while (rightEquationOperator(collection[right], elementToCompare)) right--;
+                while (collection[left].CompareTo(elementToCompare) < 0) left++;
+                while (collection[right].CompareTo(elementToCompare) > 0) right--;
+
+                if (left >= right)
+                {
+                    return right;
+                }
+
+                collection.Swap(left, right);
+                left++; right--;
+            }
+        }
+
+        /// <summary>
+        /// Helper function for QuickSort methods. Collection is divided by value separating element. All values lesser
+        /// are moved before him and all greater after him
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <param name="startIndex">Index of the first element of the collection</param>
+        /// <param name="lastIndex">Index of the last element of the collection</param>
+        /// <returns></returns>
+        private static int PartitionDesc<T>(this IList<T> collection, int startIndex, int lastIndex) where T : IComparable, IComparable<T>
+        {
+            var elementToCompare = collection[(startIndex + lastIndex) >> 1]; //equivalent of (int)Math.Floor((startIndex + lastIndex) / 2.0 but much faster
+            var left = startIndex;
+            var right = lastIndex;
+
+            while (true)
+            {
+                while (collection[left].CompareTo(elementToCompare) > 0) left++;
+                while (collection[right].CompareTo(elementToCompare) < 0) right--;
 
                 if (left >= right)
                 {
