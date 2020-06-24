@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using AlgorithmsExtension.Helpers;
 
 namespace AlgorithmsExtension.Sorting
 {
@@ -20,7 +19,7 @@ namespace AlgorithmsExtension.Sorting
                 var q = ((startIndex + lastIndex) >> 1); //equivalent of (int)Math.Floor((startIndex + lastIndex) / 2.0 but much faster
                 collection.MergeSortAsc(startIndex, q);
                 collection.MergeSortAsc(q + 1, lastIndex);
-                collection.Merge(startIndex, q, lastIndex, Functor.Less<T>());
+                collection.MergeAsc(startIndex, q, lastIndex);
             }
         }
 
@@ -38,20 +37,19 @@ namespace AlgorithmsExtension.Sorting
                 var q = ((startIndex + lastIndex) >> 1); //equivalent of (int)Math.Floor((startIndex + lastIndex) / 2.0 but much faster
                 collection.MergeSortDesc(startIndex, q);
                 collection.MergeSortDesc(q + 1, lastIndex);
-                collection.Merge(startIndex, q, lastIndex, Functor.Greater<T>());
+                collection.MergeDesc(startIndex, q, lastIndex);
             }
         }
 
         /// <summary>
-        /// Help function for MergeSort methods. Sorts two IList collections concatenated to one if each is internally sorted
+        /// Help function for MergeSortAsc method. Sorts two IList collections concatenated to one if each is internally sorted
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="collection"></param>
         /// <param name="startIndex">Index of the first element of first collection</param>
         /// <param name="middleIndex">Index of the last element of first collection</param>
         /// <param name="lastIndex">Index of the last element of second collection</param>
-        /// <param name="equationOperator">For ascending sort use Functor.Less, else use Functor.Greater</param>
-        public static void Merge<T>(this IList<T> collection, int startIndex, int middleIndex, int lastIndex, Func<T, T, bool> equationOperator) 
+        public static void MergeAsc<T>(this IList<T> collection, int startIndex, int middleIndex, int lastIndex)
             where T : IComparable, IComparable<T>
         {
             var left = CreateLefArray(collection, startIndex, CalculateLeftLength(startIndex, middleIndex));
@@ -62,7 +60,39 @@ namespace AlgorithmsExtension.Sorting
 
             for (int k = startIndex; k <= lastIndex; k++)
             {
-                if (rightIterator >= right.Count || leftIterator < left.Count && equationOperator(left[leftIterator], right[rightIterator]))
+                if (rightIterator >= right.Count || leftIterator < left.Count && left[leftIterator].CompareTo(right[rightIterator]) < 0)
+                {
+                    collection[k] = left[leftIterator];
+                    leftIterator++;
+                }
+                else
+                {
+                    collection[k] = right[rightIterator];
+                    rightIterator++;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Help function for MergeSortDesc method. Sorts two IList collections concatenated to one if each is internally sorted
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <param name="startIndex">Index of the first element of first collection</param>
+        /// <param name="middleIndex">Index of the last element of first collection</param>
+        /// <param name="lastIndex">Index of the last element of second collection</param>
+        public static void MergeDesc<T>(this IList<T> collection, int startIndex, int middleIndex, int lastIndex)
+            where T : IComparable, IComparable<T>
+        {
+            var left = CreateLefArray(collection, startIndex, CalculateLeftLength(startIndex, middleIndex));
+            var right = CreateRightArray(collection, middleIndex, CalculateRightLength(middleIndex, lastIndex));
+
+            var leftIterator = 0;
+            var rightIterator = 0;
+
+            for (int k = startIndex; k <= lastIndex; k++)
+            {
+                if (rightIterator >= right.Count || leftIterator < left.Count && left[leftIterator].CompareTo(right[rightIterator]) > 0)
                 {
                     collection[k] = left[leftIterator];
                     leftIterator++;

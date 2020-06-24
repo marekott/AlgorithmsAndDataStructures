@@ -14,12 +14,12 @@
     <PackageTags>algorithms sorting-algorithms</PackageTags>
     <PackageId>AlgorithmsExtension</PackageId>
     <RepositoryUrl>https://github.com/marekott/AlgorithmsAndDataStructures</RepositoryUrl>
-    <AssemblyVersion>1.0.3.2</AssemblyVersion>
-    <FileVersion>1.0.3.2</FileVersion>
-    <Version>1.0.3.2</Version>
+    <AssemblyVersion>1.0.3.3</AssemblyVersion>
+    <FileVersion>1.0.3.3</FileVersion>
+    <Version>1.0.3.3</Version>
     <AssemblyName>AlgorithmsExtension</AssemblyName>
     <RootNamespace>AlgorithmsExtension</RootNamespace>
-    <PackageReleaseNotes>Replaced tail recursion in QuickSort with iteration.</PackageReleaseNotes>
+    <PackageReleaseNotes>Performance optimization in Quick Sort and Merge Sort.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
