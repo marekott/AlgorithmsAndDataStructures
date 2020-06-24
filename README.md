@@ -31,13 +31,13 @@ Usage:
 using AlgorithmsExtension.Sorting;
 ```
 
-Sorting algorithms were tested on arrays of 35000 elements with numbers from 0 to 999. Each of them in 3 cases, when data are already sorted (optimistic case), when they are not (random case) and when they were sorted in reverse order (pessimistic case). Each time algorithms were sorting ten times and an average of all cases where computed. Results are presented in milliseconds.
+Sorting algorithms were tested on arrays of 35000 elements with numbers from 0 to 99999. Each of them in 3 cases, when data are already sorted (optimistic case), when they are not (random case) and when they were sorted in reverse order (pessimistic case). Each time algorithms were sorting one hundred times and an average of all cases where computed. Results are presented in milliseconds.
 
 <p>
-  <img src="src/Algorithms/img/Algorithms performance.jpg" alt="Algorithms performance"/>
+  <img src="img/Algorithms performance.jpg" alt="Algorithms performance"/>
 </p>
 
-For beater reading executions that exceded 25 milliseconds were reduced to that time. Real performance were: BubbleSort(7555.1, 8040.3, 8241), InsertionSort(0.1, 447.1, 819.7).
+For beater reading executions that exceded 25 milliseconds were reduced to that time. Real performance were: BubbleSort(8381.61, 11899.8, 12656.89), InsertionSort(0.4, 4445.95, 8905.65).
 
 <a name="bubbleSort"></a>
 #### BubbleSort
